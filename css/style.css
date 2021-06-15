@@ -1,0 +1,366 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans&display=swap");
+
+/* 
+font-family: 'IBM Plex Mono', monospace;
+font-family: 'IBM Plex Sans', sans-serif; 
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Resets */
+body {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 14px;
+  overflow-x: hidden;
+}
+img {
+  max-width: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: normal;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  background-color: inherit;
+}
+
+/* Utilities */
+
+.title {
+  font-size: 36px;
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+.container {
+  margin: 0 auto;
+  width: 92%;
+  max-width: 900px;
+}
+.container-large {
+  max-width: 1024px;
+}
+
+.flex {
+  display: flex;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+.space-evenly {
+  justify-content: space-evenly;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.paragraph {
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.button {
+  width: 100%;
+  padding: 15px 0;
+  background-color: rgb(1, 243, 187);
+  text-align: center;
+  font-size: 16px;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  display: block;
+}
+
+.button:hover {
+  color: white;
+  background: rgb(1, 243, 187);
+  background: linear-gradient(
+    53deg,
+    rgba(1, 243, 187, 0.8995973389355743) 0%,
+    rgba(0, 0, 236, 1) 100%
+  );
+}
+
+/* Nav - Menu */
+
+#nav {
+  padding: 10px 0;
+  position: relative;
+  z-index: 10;
+}
+
+#nav > .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hamburger {
+  width: 20px;
+  height: 14px;
+  position: relative;
+  display: block;
+}
+
+.hamburger::before,
+.hamburger::after,
+.hamburger span {
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  left: 0;
+  background-color: gray;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  transition: all 0.3s linear;
+}
+
+.hamburger::before {
+  top: 0%;
+}
+
+.hamburger::after {
+  bottom: 0%;
+}
+
+.hamburger span {
+  top: calc(50% - 1px);
+  transition: opacity 0.3s linear;
+}
+
+#toggle-menu {
+  display: none;
+}
+
+#toggle-menu:checked + .hamburger span {
+  opacity: 0;
+}
+
+#toggle-menu:checked + .hamburger::before,
+#toggle-menu:checked + .hamburger::after {
+  width: calc(100% * 1.22);
+  transform-origin: 0% 50%;
+}
+
+#toggle-menu:checked + .hamburger::before {
+  transform: rotate(30deg);
+}
+
+#toggle-menu:checked + .hamburger::after {
+  transform: rotate(-30deg);
+}
+
+.list-menu {
+  position: absolute;
+  left: 0;
+  top: 44px;
+  background-color: #0000ec;
+  color: white;
+  text-transform: uppercase;
+  font-size: 16px;
+  padding: 18px 0;
+  width: 100%;
+  transform: translateX(100%);
+  transition: all 0.3s ease-in-out;
+}
+
+#toggle-menu:checked ~ .list-menu {
+  transform: translateX(0);
+}
+
+.list-menu .container li {
+  margin-bottom: 30px;
+}
+
+.list-menu .container li:last-child {
+  margin-bottom: 0px;
+}
+
+.list-menu li > a {
+  display: block;
+}
+
+.list-menu li > a:hover {
+  color: #00f3bb;
+  text-decoration: line-through;
+}
+
+/* Header */
+
+header {
+  padding: 30px 0 20px;
+}
+
+header h1 {
+  padding-right: 50px;
+}
+
+header p {
+  padding: 15px 0 30px;
+}
+
+.tachado {
+  position: relative;
+}
+
+.tachado::after {
+  content: "";
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  position: absolute;
+  left: 0;
+  top: 58%;
+}
+
+.punto-color {
+  color: #0000ec;
+}
+
+/* Section 1 - Episodios */
+
+#episodios {
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 164, 1) 0%,
+    rgba(0, 1, 254, 1) 100%
+  );
+  clip-path: polygon(0 3%, 100% 0, 100% 97%, 0 100%);
+  padding: 60px 0 140px;
+}
+
+#episodios .title {
+  padding-bottom: 20px;
+  color: white;
+}
+
+.container iframe {
+  margin-bottom: 10px;
+}
+
+/* Section 2 - Nosotros */
+
+#nosotros {
+  padding-bottom: 40px;
+  position: relative;
+}
+
+#nosotros img {
+  margin-top: -100px;
+  margin-bottom: 30px;
+}
+
+#nosotros .title {
+  margin-bottom: 8px;
+}
+
+#nosotros .paragraph-bottom {
+  padding-bottom: 12px;
+}
+
+/* Section 3 - Entrevistas */
+
+.all-img > li {
+  width: 100%;
+  height: calc(100vw - 77px);
+}
+
+.all-img > li > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Section 4 - Tópicos */
+
+#topicos {
+  padding: 40px 0;
+}
+
+#topicos .title {
+  margin-bottom: 30px;
+}
+
+.topicos-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.topicos-list li {
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+.topicos-list li:last-child {
+  margin-bottom: 0px;
+}
+
+.topicos-list li img {
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  font-size: 24px;
+  max-width: 303px;
+  font-weight: 600;
+}
+
+/* Footer - novedades */
+
+.novedades {
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 164, 1) 0%,
+    rgba(0, 1, 254, 1) 100%
+  );
+  padding: 80px 0px 80px;
+  clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+}
+
+.novedades .title {
+  color: white;
+  padding: 0 40px;
+  margin-bottom: 40px;
+}
+
+/* Footer - socia-media */
+
+.social-media {
+  background-color: #ffffff;
+  padding: 25px 0 35px;
+  text-align: center;
+}
+
+.social-media p {
+  margin-bottom: 20px;
+}
+
+.social-media .lab {
+  font-size: 22px;
+}
+
+.social-media a:hover {
+  color: #01f3bb;
+}
