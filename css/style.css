@@ -13,6 +13,10 @@ font-family: 'IBM Plex Sans', sans-serif;
 
 /* Resets */
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "IBM Plex Mono", monospace;
   font-size: 14px;
@@ -143,15 +147,15 @@ button {
 
 /* end Utilities */
 
-/* Nav - Menu */
+/* Header - Menu */
 
-#nav {
+#header {
   padding: 10px 0;
   position: relative;
   z-index: 10;
 }
 
-#nav > .container {
+#header > .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -198,12 +202,12 @@ button {
 }
 
 /* 
-El estado checked de un input con type="checkbox" nos permite
+El estado checked de un input con type="checkbox" permite
 crear un pseudo estado de verdadero y falso, de esta forma
 podemos simular cuando algo está encendido o apagado; en este
-caso, cuando el menu está abierto o cuando el mnu esta cerrado.
+caso, cuando el menu está abierto o cuando el menu esta cerrado.
 Entonces usamos el selector + para seleccionar al hermano
-consecuente del inout
+consecuente del input.
 */
 #toggle-menu:checked + .hamburger span {
   opacity: 0;
@@ -272,8 +276,13 @@ consecuente del inout
   text-decoration: line-through;
 }
 
+.list-menu li > a:active {
+  color: #060a2456;
+  text-decoration: line-through;
+}
+
 @media (min-width: 768px) {
-  #nav img {
+  #header img {
     width: 36px;
     height: 36px;
   }
@@ -305,15 +314,15 @@ consecuente del inout
   }
 }
 
-/* end Nav - Menu */
+/* end Header - Menu */
 
-/* Header */
+/* Main */
 
-header {
+main {
   padding: 30px 0px;
 }
 
-header p {
+main p {
   padding: 15px 0 30px;
 }
 
@@ -336,22 +345,22 @@ header p {
     color: #0000ec;
   }
 
-  header {
+  main {
     padding: 60px 0;
   }
 
-  header .title {
+  main .title {
     font-size: 64px;
     line-height: 84px;
   }
 
-  header p {
+  main p {
     padding: 15px 0 60px;
     width: 600px;
   }
 }
 
-/* end Header */
+/* end Main */
 
 /* Section 1 - Episodios */
 
@@ -583,7 +592,7 @@ header p {
 
 /* end Footer - novedades */
 
-/* Footer - socia-media */
+/* Footer - social-media */
 
 .social-media {
   background-color: #ffffff;
@@ -595,8 +604,8 @@ header p {
   margin-bottom: 20px;
 }
 
-.social-media .lab {
-  font-size: 22px;
+.social-media .icon {
+  font-size: 16px;
 }
 
 .social-media a:hover {
@@ -604,7 +613,6 @@ header p {
 }
 
 @media (min-width: 768px) {
-
   .social-media {
     background-color: #ffffff;
     padding: 35px 0;
@@ -617,13 +625,17 @@ header p {
     align-items: center;
   }
 
-  .social-media p{
+  .social-media p {
     font-size: 16px;
     margin-bottom: 0;
   }
 
   .social-media li {
-    margin-right: 22px;
+    margin-right: 30px;
+  }
+
+  .social-media .icon {
+    font-size: 18px;
   }
 
   .social-media li:last-child {
