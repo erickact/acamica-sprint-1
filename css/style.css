@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;600&display=swap");
 
 /* 
 font-family: 'IBM Plex Mono', monospace;
@@ -12,11 +12,12 @@ font-family: 'IBM Plex Sans', sans-serif;
 }
 
 /* Resets */
+
 body {
   font-family: "IBM Plex Mono", monospace;
   font-size: 14px;
-  overflow-x: hidden;
 }
+
 img {
   max-width: 100%;
 }
@@ -41,6 +42,8 @@ button {
   background-color: inherit;
 }
 
+/* end Resets */
+
 /* Utilities */
 
 .title {
@@ -53,6 +56,7 @@ button {
   width: 92%;
   max-width: 900px;
 }
+
 .container-large {
   max-width: 1024px;
 }
@@ -83,8 +87,8 @@ button {
   background-color: rgb(1, 243, 187);
   text-align: center;
   font-size: 16px;
-  font-family: "IBM Plex Sans", sans-serif;
-  font-weight: bold;
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 500;
   text-transform: uppercase;
   display: block;
 }
@@ -98,6 +102,46 @@ button {
     rgba(0, 0, 236, 1) 100%
   );
 }
+
+.line-break {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .line-break {
+    display: inline;
+  }
+
+  .button {
+    display: inline;
+    width: auto;
+    font: 18px;
+    padding: 15px 60px;
+  }
+
+  .container {
+    margin: 0 auto;
+    width: 80%;
+    max-width: 1000px;
+  }
+
+  .container-large {
+    width: 90%;
+    max-width: 1200px;
+  }
+
+  .title {
+    font-size: 48px;
+    line-height: 62px;
+  }
+
+  .paragraph {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+/* end Utilities */
 
 /* Nav - Menu */
 
@@ -153,6 +197,14 @@ button {
   display: none;
 }
 
+/* 
+El estado checked de un input con type="checkbox" nos permite
+crear un pseudo estado de verdadero y falso, de esta forma
+podemos simular cuando algo está encendido o apagado; en este
+caso, cuando el menu está abierto o cuando el mnu esta cerrado.
+Entonces usamos el selector + para seleccionar al hermano
+consecuente del inout
+*/
 #toggle-menu:checked + .hamburger span {
   opacity: 0;
 }
@@ -171,22 +223,36 @@ button {
   transform: rotate(-30deg);
 }
 
+/* El position absolute se mueve de acuerdo al padre Nav
+"relative" */
+
 .list-menu {
   position: absolute;
-  left: 0;
+  right: 0;
   top: 44px;
   background-color: #0000ec;
   color: white;
   text-transform: uppercase;
   font-size: 16px;
   padding: 18px 0;
-  width: 100%;
-  transform: translateX(100%);
-  transition: all 0.3s ease-in-out;
+  width: 0;
+  transform: translateX(
+    100%
+  ); /* Se traslada al final de la medida del elemento. */
+  overflow-x: hidden;
+}
+
+@media screen and (max-width: 768px) {
+  .list-menu {
+    transition: all 0.3s ease-in-out;
+  }
 }
 
 #toggle-menu:checked ~ .list-menu {
-  transform: translateX(0);
+  transform: translateX(
+    0
+  ); /* Se traslada al inicio de la medida del elemento. */
+  width: 100%;
 }
 
 .list-menu .container li {
@@ -206,14 +272,45 @@ button {
   text-decoration: line-through;
 }
 
+@media (min-width: 768px) {
+  #nav img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .list-menu .container {
+    display: flex;
+    width: auto;
+  }
+
+  .hamburger {
+    display: none;
+  }
+
+  .list-menu {
+    width: auto;
+    overflow-x: auto;
+    position: static;
+    transform: translateX(0);
+    background-color: transparent;
+    color: black;
+  }
+
+  .list-menu .container li {
+    margin-bottom: 0;
+    margin-right: 30px;
+  }
+  .list-menu .container li:last-child {
+    margin-right: 0;
+  }
+}
+
+/* end Nav - Menu */
+
 /* Header */
 
 header {
-  padding: 30px 0 20px;
-}
-
-header h1 {
-  padding-right: 50px;
+  padding: 30px 0px;
 }
 
 header p {
@@ -234,9 +331,27 @@ header p {
   top: 58%;
 }
 
-.punto-color {
-  color: #0000ec;
+@media (min-width: 768px) {
+  .punto-color {
+    color: #0000ec;
+  }
+
+  header {
+    padding: 60px 0;
+  }
+
+  header .title {
+    font-size: 64px;
+    line-height: 84px;
+  }
+
+  header p {
+    padding: 15px 0 60px;
+    width: 600px;
+  }
 }
+
+/* end Header */
 
 /* Section 1 - Episodios */
 
@@ -247,7 +362,7 @@ header p {
     rgba(0, 1, 254, 1) 100%
   );
   clip-path: polygon(0 3%, 100% 0, 100% 97%, 0 100%);
-  padding: 60px 0 140px;
+  padding: 70px 0 140px;
 }
 
 #episodios .title {
@@ -258,6 +373,33 @@ header p {
 .container iframe {
   margin-bottom: 10px;
 }
+
+@media (min-width: 768px) {
+  #episodios {
+    background: rgb(0, 1, 224);
+    background: linear-gradient(
+      270deg,
+      rgba(0, 1, 224, 1) 0%,
+      rgba(0, 0, 193, 1) 100%
+    );
+    clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
+    padding: 110px 0 160px;
+  }
+
+  #episodios .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  #episodios .container > iframe {
+    width: 48%;
+    margin-bottom: 40px;
+  }
+}
+
+/* end Section 1 - Episodios */
 
 /* Section 2 - Nosotros */
 
@@ -279,6 +421,28 @@ header p {
   padding-bottom: 12px;
 }
 
+@media (min-width: 768px) {
+  #nosotros .container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  #nosotros img {
+    width: 450px;
+    margin-top: -140px;
+  }
+
+  #nosotros .container p {
+    width: 450px;
+  }
+
+  #nosotros .title {
+    margin-top: 70px;
+  }
+}
+
+/* end Section 2 - Nosotros */
+
 /* Section 3 - Entrevistas */
 
 .all-img > li {
@@ -291,6 +455,25 @@ header p {
   height: 100%;
   object-fit: cover;
 }
+
+@media (min-width: 768px) {
+  #entrevistas .container {
+    margin-bottom: 26px;
+  }
+
+  .all-img {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .all-img > li {
+    width: calc(100% / 3);
+    height: 240px;
+  }
+}
+
+/* end Section 3 - Entrevistas */
 
 /* Section 4 - Tópicos */
 
@@ -311,6 +494,8 @@ header p {
 .topicos-list li {
   margin-bottom: 60px;
   text-align: center;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 600;
 }
 
 .topicos-list li:last-child {
@@ -325,7 +510,40 @@ header p {
   font-size: 24px;
   max-width: 303px;
   font-weight: 600;
+  text-align: center;
 }
+
+@media (min-width: 768px) {
+  #topicos {
+    padding: 60px 0px 30px;
+  }
+
+  .topicos-list {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: inherit;
+  }
+
+  .topicos-list li {
+    margin-bottom: 0;
+    width: 25%;
+  }
+
+  .topicos-list li img {
+    margin-bottom: 20px;
+  }
+
+  .subtitle {
+    max-width: 220px;
+    margin: 0 auto;
+  }
+
+  #topicos .title {
+    margin-bottom: 60px;
+  }
+}
+
+/* end Section 4 - Tópicos */
 
 /* Footer - novedades */
 
@@ -335,8 +553,8 @@ header p {
     rgba(0, 0, 164, 1) 0%,
     rgba(0, 1, 254, 1) 100%
   );
-  padding: 80px 0px 80px;
-  clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+  padding: 80px 0px;
+  clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
 }
 
 .novedades .title {
@@ -344,6 +562,26 @@ header p {
   padding: 0 40px;
   margin-bottom: 40px;
 }
+
+@media (min-width: 768px) {
+  .novedades {
+    background: rgb(0, 1, 224);
+    background: linear-gradient(
+      270deg,
+      rgba(0, 1, 224, 1) 0%,
+      rgba(0, 0, 193, 1) 100%
+    );
+    text-align: center;
+    padding: 160px 0px 150px;
+    clip-path: polygon(0 25%, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .novedades .title {
+    margin-bottom: 60px;
+  }
+}
+
+/* end Footer - novedades */
 
 /* Footer - socia-media */
 
@@ -364,3 +602,33 @@ header p {
 .social-media a:hover {
   color: #01f3bb;
 }
+
+@media (min-width: 768px) {
+
+  .social-media {
+    background-color: #ffffff;
+    padding: 35px 0;
+    text-align: center;
+  }
+
+  .social-media .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .social-media p{
+    font-size: 16px;
+    margin-bottom: 0;
+  }
+
+  .social-media li {
+    margin-right: 22px;
+  }
+
+  .social-media li:last-child {
+    margin-right: 0;
+  }
+}
+
+/* end Footer - socia-media */
