@@ -502,16 +502,6 @@ main p {
   object-fit: cover;
 }
 
-@media (min-width: 768px) {
-  #entrevistas .container {
-    margin-bottom: 26px;
-  }
-
-  .all-img > li {
-    width: calc(100% / 3);
-    height: calc(100vw / 4);
-  }
-}
 @media (min-width: 500px) {
   .all-img {
     display: flex;
@@ -521,6 +511,17 @@ main p {
   .all-img > li {
     width: calc(100% / 2);
     height: calc(100vw / 3);
+  }
+}
+
+@media (min-width: 768px) {
+  #entrevistas .container {
+    margin-bottom: 26px;
+  }
+
+  .all-img > li {
+    width: calc(100% / 3);
+    height: calc(100vw / 4);
   }
 }
 
